@@ -22,7 +22,6 @@ install(PROGRAMS
   scripts/load_task1_params.py
   scripts/parc_robot_route.py
   scripts/parc_robot_nav.py
-  scripts/task1_solution.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

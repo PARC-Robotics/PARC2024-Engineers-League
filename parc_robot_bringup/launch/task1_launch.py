@@ -197,6 +197,13 @@ def generate_launch_description():
         period=4.0, actions=[start_joint_broadcaster_cmd]
     )
 
+    # Start teleop node
+    start_teleop_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [os.path.join(pkg_path, "launch", "teleop_launch.py")]
+        )
+    )
+
     # Launch RViz
     start_rviz_cmd = Node(
         package="rviz2",
@@ -217,6 +224,7 @@ def generate_launch_description():
     # Add any actions
     ld.add_action(start_gazebo_cmd)
     ld.add_action(start_rviz_cmd)
+    ld.add_action(start_teleop_cmd)
     ld.add_action(OpaqueFunction(function=spawn_gazebo_entities))
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(start_delayed_robot_base_controller_cmd)

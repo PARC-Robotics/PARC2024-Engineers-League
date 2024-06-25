@@ -44,6 +44,22 @@
 
   <link name="base_footprint"/>
 
+  <!-- Base bumper -->
+  <gazebo reference="base_link">
+    <sensor name="base_collision_sensor" type="contact">
+      <contact>
+        <collision>base_footprint_fixed_joint_lump__base_collision_collision</collision>
+      </contact>
+      <plugin name="base_collision_sensor" filename="libgazebo_ros_bumper.so">
+        <ros>
+          <remapping>bumper_states:=base_collisions</remapping>
+        </ros>
+        <always_on>true</always_on>
+        <frame_name>base_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
   <joint name="base_footprint_joint" type="fixed">
       <origin xyz="0 0 ${wheel_radius - wheel_vertical_offset}" rpy="0 0 0" />
       <parent link="base_footprint" />
@@ -79,6 +95,67 @@
   <xacro:scout_wheel_type2 wheel_prefix="rear_right">
       <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="3.142 0 0" />
   </xacro:scout_wheel_type2>
+
+  <!-- Wheel bumpers -->
+  <gazebo reference="front_left_wheel_link">
+    <sensor name="front_left_collision_sensor" type="contact">
+      <contact>
+        <collision>front_left_wheel_link_collision</collision>
+      </contact>
+      <plugin name="front_left_collision_sensor" filename="libgazebo_ros_bumper.so">
+        <ros>
+          <remapping>bumper_states:=front_left_collisions</remapping>
+        </ros>
+        <always_on>true</always_on>
+        <frame_name>front_left_wheel_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel_link">
+    <sensor name="front_right_collision_sensor" type="contact">
+      <contact>
+        <collision>front_right_wheel_link_collision</collision>
+      </contact>
+      <plugin name="front_right_collision_sensor" filename="libgazebo_ros_bumper.so">
+        <ros>
+          <remapping>bumper_states:=front_right_collisions</remapping>
+        </ros>
+        <always_on>true</always_on>
+        <frame_name>front_right_wheel_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="rear_left_wheel_link">
+    <sensor name="rear_left_collision_sensor" type="contact">
+      <contact>
+        <collision>rear_left_wheel_link_collision</collision>
+      </contact>
+      <plugin name="rear_left_collision_sensor" filename="libgazebo_ros_bumper.so">
+        <ros>
+          <remapping>bumper_states:=rear_left_collisions</remapping>
+        </ros>
+        <always_on>true</always_on>
+        <frame_name>rear_left_wheel_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="rear_right_wheel_link">
+    <sensor name="rear_right_collision_sensor" type="contact">
+      <contact>
+        <collision>rear_right_wheel_link_collision</collision>
+      </contact>
+      <plugin name="rear_right_collision_sensor" filename="libgazebo_ros_bumper.so">
+        <ros>
+          <remapping>bumper_states:=rear_right_collisions</remapping>
+        </ros>
+        <always_on>true</always_on>
+        <frame_name>rear_right_wheel_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
 
   <!-- Sensor definitions -->
   <xacro:include filename="$(find parc_robot_description)/urdf/sensors.xacro" />
