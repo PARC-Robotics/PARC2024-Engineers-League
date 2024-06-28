@@ -7,3 +7,6 @@ Pan-African Robotics Competition (PARC) Engineers League category project develo
 - [`parc_robot_interfaces`](./parc_robot_interfaces/) : Contains custom messages used in the project.
 
 The documentation for the 2024 PARC Engineers League is available [here](https://parc-robotics.github.io/documentation-2024/introduction/).
+
+## Reference
+[Crop field generator](https://github.com/azazdeaz/fields-ignition)
