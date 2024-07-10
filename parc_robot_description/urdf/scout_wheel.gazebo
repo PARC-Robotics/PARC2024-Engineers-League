@@ -27,6 +27,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="scout_wheel">
 
+  <!-- TODO: remove file, gazebo_ros2_control does not support transmissions -->
   <xacro:macro name="scout_wheel_transmission" params="wheel_prefix">
     <transmission name="${wheel_prefix}_wheel_trans" type="SimpleTransmission">
       <type>transmission_interface/SimpleTransmission</type>
